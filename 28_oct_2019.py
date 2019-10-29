@@ -3,7 +3,7 @@ Question:
 Given a list of numbers with only 3 unique numbers (1, 2, 3), sort the list in O(n) complexity
 
 Idea:
-Credit - @Pratik.Somawanshi
+Credit - @Pratik.Somwanshi
 > Count all frequency of the 3 numbers
 > Construct resultant array from the count.
 
