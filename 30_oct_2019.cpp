@@ -2,6 +2,10 @@
 Question:
 Given a list of numbers, where every number shows up twice except for one number, find that number
 
+Idea:
+Credits - @Pratik.Somwanshi
+> Take XOR of all the numbers. Same numbers will cancel out each other.
+
 Time Complexity: O(n)
 Space Complexity: O(1)
 */
@@ -14,26 +18,10 @@ using namespace std;
 class Solution {
 public:
     int findUnique(vector<int> nums) {
-        int p = 1;
-        bool zero = false;
-
-        for(auto c: nums) {
-            if (c == 0) {
-                zero = !zero;
-                continue;
-            }
-            if (p % c ==0) {
-                p /= c;
-            }
-            else {
-                p *= c;
-            }
+        int p = 0;
+        for (auto c: nums) {
+        	p = p ^ c;
         }
-
-        if (zero) {
-            return 0;
-        }
-
         return p;
     }
 };

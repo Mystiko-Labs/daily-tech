@@ -2,30 +2,20 @@
 Question:
 Given a list of numbers, where every number shows up twice except for one number, find that number
 
+Idea:
+Credits - @Pratik.Somwanshi
+> Take XOR of all the numbers. Same numbers will cancel out each other.
+
 Time Complexity: O(n)
 Space Complexity: O(1)
 """
 import unittest
+from functools import reduce
 
 class Solution:
 
 	def findUnique(self, nums):
-		res = 1
-		zero = False
-		for num in nums:
-			if num == 0:
-				zero = not zero
-				continue
-
-			if res % num == 0:
-				res /= num
-			else:
-				res *= num
-
-		if zero:
-			return 0
-
-		return res
+		return reduce(lambda x, y: x ^ y, nums)
 
 class TestCases(unittest.TestCase):
 
@@ -35,6 +25,7 @@ class TestCases(unittest.TestCase):
 		self.assertEqual(s.findUnique([2, 3, 2]), 3)
 		self.assertEqual(s.findUnique([2]), 2)
 		self.assertEqual(s.findUnique([0, 1, 2, 2, 1]), 0)
+		self.assertEqual(s.findUnique([0, 0, 1, 1, 2]), 2)
 		self.assertEqual(s.findUnique([0, 0, 1, 1, 2]), 2)
 
 
